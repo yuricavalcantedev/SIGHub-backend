@@ -1,0 +1,19 @@
+O QUE PODE SER ALTERADO - SERVICE
+
+ApplicationDomain e Area
+
+- nome, descrição e a lista de exemplos (OK)
+
+Person, User
+
+email e senha (OK)
+
+Softgoal
+
+name, description, todos os tipos de contribuição e a sua lista de softgoals
+
+Catalog
+
+autores, a referencia, o ano, a lista dos ApplicationDomain, keyWords, description, softgoal main (?, por enquanto sim), as listas de notas e as areas.
+
+TODO - TERÇA, QUARTA (RELACIONAMENTOS E NOTAÇÕES NOS FIELDS).
