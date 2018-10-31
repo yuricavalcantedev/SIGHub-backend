@@ -1,12 +1,17 @@
 package br.com.yuri.cavalcante.tcc.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -22,14 +27,19 @@ public class ApplicationDomain implements Serializable{
 	@NotEmpty(message = "You must type a name")
 	@Size(min = 4, max = 40, message = "The name must be between 4 and 40 characters")
 	private String name;
+	
 	private String description;
-	private Set<String> exampleList;
+	
+	@ManyToMany(mappedBy = "applicationDomainsList")
+	private List<Catalog> catalogList = new ArrayList<Catalog>();
+	
+	private String exampleList; //separating through ";"
 		
 	public ApplicationDomain() {
 
 	}
 	
-	public ApplicationDomain(Integer id, String name, String description, Set<String> exampleList) {
+	public ApplicationDomain(Integer id, String name, String description, String exampleList) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -64,12 +74,20 @@ public class ApplicationDomain implements Serializable{
 		this.description = description;
 	}
 	
-	public Set<String> getExampleList() {
+	public List<Catalog> getCatalogList() {
+		return catalogList;
+	}
+
+	public void setCatalogList(List<Catalog> catalogList) {
+		this.catalogList = catalogList;
+	}
+
+	public String getExampleList() {
 		return exampleList;
 	}
 	
 
-	public void setExampleList(Set<String> exampleList) {
+	public void setExampleList(String exampleList) {
 		this.exampleList = exampleList;
 	}
 

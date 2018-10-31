@@ -1,19 +1,21 @@
-O QUE PODE SER ALTERADO - SERVICE
+RELATIONSHIPS - OK
+- BUT NEED TO TEST THEM (WHEN TESTING CONTROLLERS)
 
-ApplicationDomain e Area
+ENDPOINTS
 
-- nome, descrição e a lista de exemplos (OK)
+//implementar o método que vai procurar se a categoria já existe antes de salvar
+//fazer aquela simples alteração no texto das mensagens de object not found
 
-Person, User
+ApplicationDomain - OK
+Area - OK
+Catalog -
+Note - 
+Person -
+Softgoal -
+User -
 
-email e senha (OK)
+lembrar da lista de catálogos favoritos que o usuário pode ter 
+adicionar data de criação no catálogo? (acho bom para quando uma pessoa for pesquisar, saber se esse catálogo é recente)
 
-Softgoal
 
-name, description, todos os tipos de contribuição e a sua lista de softgoals
-
-Catalog
-
-autores, a referencia, o ano, a lista dos ApplicationDomain, keyWords, description, softgoal main (?, por enquanto sim), as listas de notas e as areas.
-
-TODO - TERÇA, QUARTA (RELACIONAMENTOS E NOTAÇÕES NOS FIELDS).
+estudar essas notações do JPA, não estou entendendo direito

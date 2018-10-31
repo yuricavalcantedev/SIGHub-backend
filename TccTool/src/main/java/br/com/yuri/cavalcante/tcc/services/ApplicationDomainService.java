@@ -22,6 +22,7 @@ public class ApplicationDomainService {
 	private ApplicationDomainRepository applicationDomainRepository;
 	
 	public ApplicationDomain insert(ApplicationDomain applicationDomain) {
+		
 		applicationDomain.setId(null);
 		return applicationDomainRepository.save(applicationDomain);
 	}
@@ -38,11 +39,13 @@ public class ApplicationDomainService {
 	}
 	
 	public ApplicationDomain find(Integer id){
+		
 		Optional<ApplicationDomain> applicationDomain = applicationDomainRepository.findById(id); 
-		return applicationDomain.orElseThrow(() -> new ObjectNotFoundException("Object not found! Id: - " + id + "Type:" + ApplicationDomain.class.getName())); 
+		return applicationDomain.orElseThrow(() -> new ObjectNotFoundException("Object not found! Id: " + id + " - Type:" + ApplicationDomain.class.getName())); 
 	}
 	
 	public ApplicationDomain update(ApplicationDomain applicationDomain) {
+		
 		ApplicationDomain updatedAplicationDomain = find(applicationDomain.getId());
 		updatedAplicationDomain.setName(applicationDomain.getName());
 		updatedAplicationDomain.setDescription(applicationDomain.getDescription());

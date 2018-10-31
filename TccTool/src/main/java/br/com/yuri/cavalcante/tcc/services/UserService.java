@@ -22,6 +22,7 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	public User insert(User user) {
+		
 		user.setId(null);
 		return userRepository.save(user);
 	}
@@ -38,11 +39,13 @@ public class UserService {
 	}
 	
 	public User find(Integer id){
+		
 		Optional<User> user = userRepository.findById(id); 
 		return user.orElseThrow(() -> new ObjectNotFoundException("Object not found! Id: - " + id + "Type:" + User.class.getName())); 
 	}
 	
 	public User update(User user) {
+		
 		User updatedUser = find(user.getId());
 		updatedUser.setEmail(user.getEmail());
 		updatedUser.setPassword(user.getPassword());

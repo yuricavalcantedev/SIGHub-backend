@@ -17,51 +17,54 @@ import br.com.yuri.cavalcante.tcc.repositories.AreaRepository;
 
 @Service
 public class AreaService {
-	
+
 	@Autowired
 	private AreaRepository areaRepository;
-	
+
 	public Area insert(Area area) {
+
 		area.setId(null);
 		return areaRepository.save(area);
 	}
-	
+
 	public List<Area> findAll(){
-		
+
 		return areaRepository.findAll();		
 	}
-	
+
 	public Page<Area> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
-		
+
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);		
 		return areaRepository.findAll(pageRequest);
 	}
-	
+
 	public Area find(Integer id){
+
 		Optional<Area> area = areaRepository.findById(id); 
-		return area.orElseThrow(() -> new ObjectNotFoundException("Object not found! Id: - " + id + "Type:" + Area.class.getName())); 
+		return area.orElseThrow(() -> new ObjectNotFoundException("Object not found! Id: " + id + " - Type:" + Area.class.getName())); 
 	}
-	
+
 	public Area update(Area area) {
+
 		Area updatedAplicationDomain = find(area.getId());
 		updatedAplicationDomain.setName(area.getName());
 		updatedAplicationDomain.setDescription(area.getDescription());
-		updatedAplicationDomain.setExampleList(area.getExampleList());
-		
+		updatedAplicationDomain.setExample(area.getExample());
+
 		return areaRepository.save(updatedAplicationDomain);
 	}
-	
+
 	//TODO: LEMBRAR DE FAZER A DOCUMENTAÇÃO DA API? NÃO SEI SE PRECISA
-		
+
 	public void delete(Integer id) {		 
-		
-		find(id); //if didn't work, it's gonna throw a exception already.
+
+		find(id);
 		try {
 			areaRepository.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityException("It's not possible delete an area that has catalogs linked to it.");
 		}
-		
+
 	}
 
 }

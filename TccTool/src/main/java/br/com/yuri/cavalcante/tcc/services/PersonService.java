@@ -22,6 +22,7 @@ public class PersonService {
 	private PersonRepository personRepository;
 	
 	public Person insert(Person person) {
+		
 		person.setId(null);
 		return personRepository.save(person);
 	}
@@ -38,11 +39,13 @@ public class PersonService {
 	}
 	
 	public Person find(Integer id){
+		
 		Optional<Person> person = personRepository.findById(id); 
 		return person.orElseThrow(() -> new ObjectNotFoundException("Object not found! Id: - " + id + "Type:" + Person.class.getName())); 
 	}
 	
 	public Person update(Person person) {
+		
 		Person updatedPerson = find(person.getId());
 		updatedPerson.setEmail(person.getEmail());
 		
@@ -57,7 +60,7 @@ public class PersonService {
 			personRepository.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityException("It's not possible delete an person that has catalogs linked to it.");
-			// I think that hasn't problem to do that, because the catalog doesn't need a person, just a user linked. I mean, a catalog may has just a owner as author (remeber to set owner as an author in the catalog). 
+			// I think that hasn't problem to do that, because the catalog doesn't need a person, just a user linked. I mean, a catalog may has just a owner as author (remember to set owner as an author in the catalog). 
 		}
 		
 	}

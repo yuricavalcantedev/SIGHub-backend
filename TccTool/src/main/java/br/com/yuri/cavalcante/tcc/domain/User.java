@@ -1,11 +1,27 @@
 package br.com.yuri.cavalcante.tcc.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User extends Person{
+
+	private static final long serialVersionUID = 1L;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "owner")
+	private List<Catalog> catalogsList = new ArrayList<Catalog>();
 	
 	private String password;
+	
+	public User() {
+		
+	}
 	
 	public User(String password) {
 		super();
