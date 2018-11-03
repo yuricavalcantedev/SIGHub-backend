@@ -2,6 +2,7 @@ package br.com.yuri.cavalcante.tcc.domain.enums;
 
 public enum ContributionType {
 
+	NONE_CONTRIBUTION(0, "NONE_CONTRIBUTION"),
 	AND_CONTRIBUTION(1,"AND_CONTRIBUTION"),
 	OR_CONTRIBUTION(2,"OR_CONTRIBUTION");
 	

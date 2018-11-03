@@ -27,6 +27,7 @@ public class Note implements Serializable{
 	@JoinColumn(name = "catalog_id")
 	private Catalog catalog = new Catalog();
 
+
 	public Note() {
 		
 	}
@@ -53,7 +54,7 @@ public class Note implements Serializable{
 
 	public void setCatalog(Catalog catalog) {
 		this.catalog = catalog;
-	}
+	}	
 
 	public String getText() {
 		return text;

@@ -45,13 +45,14 @@ public class Catalog implements Serializable{
 	@JoinTable(name="catalogs_authors",
 	joinColumns = @JoinColumn(name = "catalog_id"),
 	inverseJoinColumns = @JoinColumn(name = "author_id"))
-	private List<Person> authors = new ArrayList<Person>(); ;
+	private List<Person> authors = new ArrayList<Person>();
 	
 	@ManyToMany
 	@JoinTable(name="catalogs_area",
 	joinColumns = @JoinColumn(name = "catalog_id"),
 	inverseJoinColumns = @JoinColumn(name = "area_id"))
 	private List<Area> areasList = new ArrayList<Area>(); 
+
 
 	@ManyToMany
 	@JoinTable(name="catalogs_applicationDomain",

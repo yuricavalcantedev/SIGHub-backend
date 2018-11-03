@@ -1,6 +1,7 @@
 package br.com.yuri.cavalcante.tcc.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -25,11 +26,7 @@ public class Softgoal implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	private Softgoal parent;	
-	
-	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	@JoinTable(name="Softgoal_List_children")
-	private List<Softgoal> softgoalList;
+	private Softgoal parent;
 	
 	//PRESTAR ATENÇÃO NA QUESTÃO DE UMA ENTIDADE SABER DE OUTRA, MAS A SEGUNDA NÃO SABER DA PRIMEIRA...VER O DIAGRAMA DE CLASSE DO RAPAZ.
 	@JsonIgnore
@@ -44,6 +41,10 @@ public class Softgoal implements Serializable{
 	private Integer contributionType;
 	private Integer contributionTypeCatalog;
 	private Integer evaluationProcedure;
+	
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinTable(name="Softgoal_List_children")
+	private List<Softgoal> softgoalList = new ArrayList<Softgoal>();
 
 	public Softgoal() {
 
