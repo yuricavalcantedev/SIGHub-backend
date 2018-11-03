@@ -1,7 +1,0 @@
-package br.com.yuri.cavalcante.tcc.repositories;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public class PessoaRepository extends JpaRepository<Pessoa, Integer>{
-
-}

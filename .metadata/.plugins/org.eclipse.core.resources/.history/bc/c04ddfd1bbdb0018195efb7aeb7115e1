@@ -1,5 +1,0 @@
-package br.com.yuri.cavalcante.tcc.domain.enums;
-
-public enum NFRType {
-
-}
