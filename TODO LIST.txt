@@ -19,3 +19,17 @@ adicionar data de criação no catálogo? (acho bom para quando uma pessoa for pesq
 
 
 estudar essas notações do JPA, não estou entendendo direito
+
+"Leitura 
+
+uma categoria tem vários produtos (categoria vai ter uma lista de produtos)
+um produto tem uma ou mais categorias (produto vai ter uma lista de categorias)
+
+"muitos para muitos cria uma nova tabela"
+"@ManyToOne (categorias e produtos)"
+
+"@OneToOne (pagamento e pedido)
+
+fazer as associações de mão dupla antes de salvar via repositories
+"@ManyToOne" fica no lado mais fraco da associação (notas no caso da lista de catálogos do TCC)
+"só o endereço conhece a cidade, a cidade não conhece o endereço"

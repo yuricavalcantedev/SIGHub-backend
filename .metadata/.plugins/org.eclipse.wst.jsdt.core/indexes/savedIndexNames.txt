@@ -1,0 +1,1 @@
+INDEX VERSION 1.4+C:\Users\Yuri\Documents\UFC\TCC - Implementação\tccTool\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes

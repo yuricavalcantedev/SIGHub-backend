@@ -1,0 +1,73 @@
+package br.com.yuri.cavalcante.tcc.domain;
+
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+public class Area implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
+	@NotEmpty(message = "You must type a name")
+	@Size(min = 4, max = 40, message = "The name must be between 4 and 40 characters")
+	private String name;
+	private String description;
+	private Set<String> exampleList;
+
+	public Area() {
+
+	}
+
+	public Area(Integer id, String name, String description, Set<String> exampleList) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.exampleList = exampleList;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Set<String> getExampleList() {
+		return exampleList;
+	}
+
+
+	public void setExampleList(Set<String> exampleList) {
+		this.exampleList = exampleList;
+	}
+}

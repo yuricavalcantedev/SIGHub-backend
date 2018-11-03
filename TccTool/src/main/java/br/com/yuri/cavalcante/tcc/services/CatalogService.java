@@ -23,6 +23,7 @@ public class CatalogService {
 	public Catalog insert(Catalog catalog) {
 		
 		catalog.setId(null);
+		
 		return catalogRepository.save(catalog);
 	}
 	

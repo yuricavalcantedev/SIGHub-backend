@@ -20,49 +20,63 @@ public class ApplicationDomainService {
 
 	@Autowired
 	private ApplicationDomainRepository applicationDomainRepository;
-	
+
 	public ApplicationDomain insert(ApplicationDomain applicationDomain) {
-		
+
 		applicationDomain.setId(null);
-		return applicationDomainRepository.save(applicationDomain);
-	}
-	
-	public List<ApplicationDomain> findAll(){
+		if(!existsArea(applicationDomain))
+			return applicationDomainRepository.save(applicationDomain);
 		
+		throw new DataIntegrityException("Already exists an application domain with this name - Type " + ApplicationDomain.class.getName());
+	}
+
+	public List<ApplicationDomain> findAll(){
+
 		return applicationDomainRepository.findAll();		
 	}
-	
+
 	public Page<ApplicationDomain> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
-		
+
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);		
 		return applicationDomainRepository.findAll(pageRequest);
 	}
-	
+
 	public ApplicationDomain find(Integer id){
-		
+
 		Optional<ApplicationDomain> applicationDomain = applicationDomainRepository.findById(id); 
 		return applicationDomain.orElseThrow(() -> new ObjectNotFoundException("Object not found! Id: " + id + " - Type:" + ApplicationDomain.class.getName())); 
 	}
-	
+
+	public boolean existsArea(ApplicationDomain applicationDomain) {
+
+		List<ApplicationDomain> listApplicationDomains = findAll();
+		for(ApplicationDomain applicationDomainAux : listApplicationDomains) {
+			if(applicationDomainAux.equals(applicationDomain))
+				return true;
+		}
+
+		return false;
+	}
+
 	public ApplicationDomain update(ApplicationDomain applicationDomain) {
-		
+
 		ApplicationDomain updatedAplicationDomain = find(applicationDomain.getId());
 		updatedAplicationDomain.setName(applicationDomain.getName());
 		updatedAplicationDomain.setDescription(applicationDomain.getDescription());
-		updatedAplicationDomain.setExampleList(applicationDomain.getExampleList());
-		
+		updatedAplicationDomain.setExample(applicationDomain.getExample());
+
 		return applicationDomainRepository.save(updatedAplicationDomain);
 	}
-	
-		
+
+
 	public void delete(Integer id) {		 
-		
+
 		find(id); //if didn't work, it's gonna throw a exception already.
 		try {
 			applicationDomainRepository.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityException("It's not possible delete an applicationDomain that has catalogs linked to it.");
 		}
-		
+
 	}
 }

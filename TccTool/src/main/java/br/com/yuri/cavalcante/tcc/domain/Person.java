@@ -1,14 +1,18 @@
 package br.com.yuri.cavalcante.tcc.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.Email;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Person implements Serializable{
@@ -20,9 +24,9 @@ public class Person implements Serializable{
 	private Integer id;
 	private String name;
 	
-	@ManyToOne
-	@JoinColumn(name="catalog_id")
-	private Catalog catalog;
+	@JsonIgnore
+	@ManyToMany(mappedBy = "authors")
+	private List<Catalog> catalogList = new ArrayList<Catalog>();
 	
 	@Email
 	private String email;
@@ -60,6 +64,14 @@ public class Person implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<Catalog> getCatalogList() {
+		return catalogList;
+	}
+
+	public void setCatalogList(List<Catalog> catalogList) {
+		this.catalogList = catalogList;
 	}
 
 	@Override

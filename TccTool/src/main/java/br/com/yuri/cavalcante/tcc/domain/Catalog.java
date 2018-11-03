@@ -17,8 +17,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Catalog implements Serializable{
 
@@ -27,46 +25,38 @@ public class Catalog implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	@NotNull
-	@JsonIgnore
-	@OneToMany(mappedBy = "catalog", cascade = CascadeType.ALL)
-	private List<Person> authors;
-	
 	private String reference;
 	private Integer year;
 	private String keyWords;
+	private String description;
 
 	@ManyToOne
 	@JoinColumn(name="owner_id")
 	private User owner;
-	private String description;
 
-	@NotNull
-	@OneToOne(mappedBy = "catalog")
+	@OneToOne(mappedBy = "catalog", cascade = CascadeType.ALL)
 	private Softgoal softgoalMain;
 
-	@JsonIgnore
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name="catalogs_note",
-	joinColumns = @JoinColumn(name = "catalog"),
-	inverseJoinColumns = @JoinColumn(name = "note"))
+	@OneToMany(mappedBy = "catalog")
 	private List<Note> notesList = new ArrayList<Note>(); 
 
-	@NotNull
-	@JsonIgnore
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="catalogs_authors",
+	joinColumns = @JoinColumn(name = "catalog_id"),
+	inverseJoinColumns = @JoinColumn(name = "author_id"))
+	private List<Person> authors = new ArrayList<Person>(); ;
+	
 	@ManyToMany
 	@JoinTable(name="catalogs_area",
-	joinColumns = @JoinColumn(name = "catalog"),
-	inverseJoinColumns = @JoinColumn(name = "area"))
+	joinColumns = @JoinColumn(name = "catalog_id"),
+	inverseJoinColumns = @JoinColumn(name = "area_id"))
 	private List<Area> areasList = new ArrayList<Area>(); 
 
-	@NotNull
-	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name="catalogs_applicationDomain",
-	joinColumns = @JoinColumn(name = "catalog"),
-	inverseJoinColumns = @JoinColumn(name = "aplicationDomain"))
+	joinColumns = @JoinColumn(name = "catalog_id"),
+	inverseJoinColumns = @JoinColumn(name = "aplicationDomain_id"))
 	private List<ApplicationDomain> applicationDomainsList = new ArrayList<ApplicationDomain>();
 
 
@@ -75,21 +65,16 @@ public class Catalog implements Serializable{
 	}
 
 	public Catalog(Integer id,  @NotNull List<Person> authors, String reference, Integer year,
-			@NotNull List<ApplicationDomain> applicationDomainsList, String keyWords, User owner,
-			String description, @NotNull Softgoal softgoalMain, List<Note> notesList,
-			@NotNull List<Area> areasList) {
+			String keyWords, User owner, String description, @NotNull Softgoal softgoalMain) {
 		super();
 		this.id = id;
 		this.authors = authors;
 		this.reference = reference;
 		this.year = year;
-		this.applicationDomainsList = applicationDomainsList;
 		this.keyWords = keyWords;
 		this.owner = owner;
 		this.description = description;
 		this.softgoalMain = softgoalMain;
-		this.notesList = notesList;
-		this.areasList = areasList;
 	}
 
 

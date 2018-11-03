@@ -12,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Area implements Serializable{
 
@@ -26,10 +28,11 @@ public class Area implements Serializable{
 	private String name;
 	private String description;
 	
+	private String example;
+	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "areasList")
 	private List<Catalog> catalogList = new ArrayList<Catalog>();
-	
-	private String example;
 
 	public Area() {
 
@@ -94,10 +97,10 @@ public class Area implements Serializable{
 
 	@Override
 	public boolean equals(Object obj) {
+		if(this.getName().toUpperCase().equals(((Area) obj).getName().toUpperCase()))
+			return true;
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Area other = (Area) obj;

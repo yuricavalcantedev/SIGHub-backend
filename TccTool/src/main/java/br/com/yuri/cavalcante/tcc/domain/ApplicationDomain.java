@@ -3,10 +3,7 @@ package br.com.yuri.cavalcante.tcc.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class ApplicationDomain implements Serializable{
@@ -30,21 +29,22 @@ public class ApplicationDomain implements Serializable{
 	
 	private String description;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "applicationDomainsList")
 	private List<Catalog> catalogList = new ArrayList<Catalog>();
 	
-	private String exampleList; //separating through ";"
+	private String example; //separating through ";"
 		
 	public ApplicationDomain() {
 
 	}
 	
-	public ApplicationDomain(Integer id, String name, String description, String exampleList) {
+	public ApplicationDomain(Integer id, String name, String description, String example) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.exampleList = exampleList;
+		this.example = example;
 	}
 	
 	public Integer getId() {
@@ -82,13 +82,13 @@ public class ApplicationDomain implements Serializable{
 		this.catalogList = catalogList;
 	}
 
-	public String getExampleList() {
-		return exampleList;
+	public String getExample() {
+		return example;
 	}
 	
 
-	public void setExampleList(String exampleList) {
-		this.exampleList = exampleList;
+	public void setExample(String example) {
+		this.example = example;
 	}
 
 	@Override
@@ -101,10 +101,11 @@ public class ApplicationDomain implements Serializable{
 
 	@Override
 	public boolean equals(Object obj) {
+		
+		if(this.getName().toUpperCase().equals(((ApplicationDomain) obj).getName().toUpperCase()))
+			return true;
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		ApplicationDomain other = (ApplicationDomain) obj;

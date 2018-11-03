@@ -9,9 +9,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.ls.LSInput;
 
 import br.com.yuri.cavalcante.tcc.controllers.exceptions.DataIntegrityException;
 import br.com.yuri.cavalcante.tcc.controllers.exceptions.ObjectNotFoundException;
+import br.com.yuri.cavalcante.tcc.domain.ApplicationDomain;
 import br.com.yuri.cavalcante.tcc.domain.Area;
 import br.com.yuri.cavalcante.tcc.repositories.AreaRepository;
 
@@ -24,7 +26,10 @@ public class AreaService {
 	public Area insert(Area area) {
 
 		area.setId(null);
-		return areaRepository.save(area);
+		if(!existsArea(area))
+			return areaRepository.save(area);
+		
+		throw new DataIntegrityException("Already exists an area with this name - Type " + Area.class.getName());
 	}
 
 	public List<Area> findAll(){
@@ -43,15 +48,26 @@ public class AreaService {
 		Optional<Area> area = areaRepository.findById(id); 
 		return area.orElseThrow(() -> new ObjectNotFoundException("Object not found! Id: " + id + " - Type:" + Area.class.getName())); 
 	}
+	
+	public boolean existsArea(Area area) {
+		
+		List<Area> listAreas = findAll();
+		for(Area areaAux : listAreas) {
+			if(areaAux.equals(area))
+				return true;
+		}
+		
+		return false;
+	}
 
 	public Area update(Area area) {
 
-		Area updatedAplicationDomain = find(area.getId());
-		updatedAplicationDomain.setName(area.getName());
-		updatedAplicationDomain.setDescription(area.getDescription());
-		updatedAplicationDomain.setExample(area.getExample());
+		Area updatedArea = find(area.getId());
+		updatedArea.setName(area.getName());
+		updatedArea.setDescription(area.getDescription());
+		updatedArea.setExample(area.getExample());
 
-		return areaRepository.save(updatedAplicationDomain);
+		return areaRepository.save(updatedArea);
 	}
 
 	//TODO: LEMBRAR DE FAZER A DOCUMENTAÇÃO DA API? NÃO SEI SE PRECISA
