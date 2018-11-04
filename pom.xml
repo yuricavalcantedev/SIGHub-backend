@@ -6,7 +6,7 @@
 	<groupId>br.com.yuri.cavalcante.tcc</groupId>
 	<artifactId>TccTool</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>TccTool</name>
 	<description>Demo project for Spring Boot</description>
@@ -54,8 +54,13 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<server>TomcatServer</server>
+					<path>/TccTool</path>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
