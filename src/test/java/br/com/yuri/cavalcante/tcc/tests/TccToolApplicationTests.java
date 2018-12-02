@@ -38,17 +38,5 @@ public class TccToolApplicationTests {
 		assertThat(areaFounded.get().getId()).isEqualTo(area.getId());
 	}
 	
-	@Test
-	public void testingArea2() {
-		
-		Area area = new Area(null, "Business", "description", "examples");
-		//entityManager.persist(area);
-		//entityManager.flush();
-		areaRepository.save(area);
-		
-		Optional<Area> areaFounded = areaRepository.findById(area.getId());
-		assertThat(areaFounded.get().getId()).isEqualTo(20);
-	}
-
 
 }
