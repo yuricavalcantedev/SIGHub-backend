@@ -27,7 +27,6 @@ public class Catalog implements Serializable{
 	private Integer id;
 	private String reference;
 	private Integer year;
-	private String keyWords;
 	private String description;
 
 	@ManyToOne
@@ -66,13 +65,12 @@ public class Catalog implements Serializable{
 	}
 
 	public Catalog(Integer id,  @NotNull List<Person> authors, String reference, Integer year,
-			String keyWords, User owner, String description, @NotNull Softgoal softgoalMain) {
+			User owner, String description, @NotNull Softgoal softgoalMain) {
 		super();
 		this.id = id;
 		this.authors = authors;
 		this.reference = reference;
 		this.year = year;
-		this.keyWords = keyWords;
 		this.owner = owner;
 		this.description = description;
 		this.softgoalMain = softgoalMain;
@@ -120,15 +118,6 @@ public class Catalog implements Serializable{
 
 	public void setApplicationDomainList(List<ApplicationDomain> applicationDomainList) {
 		this.applicationDomainsList = applicationDomainList;
-	}
-
-
-	public String getKeyWords() {
-		return keyWords;
-	}
-
-	public void setKeyWords(String keyWords) {
-		this.keyWords = keyWords;
 	}
 
 

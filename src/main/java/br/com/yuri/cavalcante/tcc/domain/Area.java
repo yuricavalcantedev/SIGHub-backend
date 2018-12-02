@@ -24,7 +24,7 @@ public class Area implements Serializable{
 	private Integer id;
 
 	@NotEmpty(message = "You must type a name")
-	@Size(min = 4, max = 40, message = "The name must be between 4 and 40 characters")
+	@Size(min = 3, max = 40, message = "The name must be between 4 and 40 characters")
 	private String name;
 	private String description;
 	

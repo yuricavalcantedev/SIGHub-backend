@@ -22,7 +22,7 @@ import br.com.yuri.cavalcante.tcc.domain.Area;
 import br.com.yuri.cavalcante.tcc.services.AreaService;
 
 @RestController
-@RequestMapping(value = "/area")
+@RequestMapping(value = "/areas")
 public class AreaController {
 	
 	//only admins can CREATE, UPDATE and DELETE the areas, commom user can just get them.
