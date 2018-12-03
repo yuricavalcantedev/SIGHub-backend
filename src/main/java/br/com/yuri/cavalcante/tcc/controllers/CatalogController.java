@@ -44,6 +44,7 @@ public class CatalogController {
 		
 	}
 
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Catalog>> findAll(){
 		
@@ -51,6 +52,7 @@ public class CatalogController {
 		return ResponseEntity.ok().body(catalogList);
 	}
 	
+	@CrossOrigin
 	@GetMapping(value = "/{id}/catalog")
 	public ResponseEntity<Catalog> find(@PathVariable Integer id){
 		
@@ -59,7 +61,7 @@ public class CatalogController {
 		
 	}
 
-	
+	@CrossOrigin 
 	@GetMapping(value = "/{searchText}") 
 	public ResponseEntity<List<Catalog>> findByDomainOrArea(@PathVariable String searchText){
 		List<Catalog> catalogs = new ArrayList<>();

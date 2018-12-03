@@ -20,8 +20,6 @@ import br.com.yuri.cavalcante.tcc.repositories.AreaRepository;
 @DataJpaTest
 public class TccToolApplicationTests {
 
-	@Autowired
-	private TestEntityManager entityManager;
 
 	@Autowired
 	private AreaRepository areaRepository;
@@ -30,8 +28,6 @@ public class TccToolApplicationTests {
 	public void testingArea() {
 		
 		Area area = new Area(null, "Business", "description", "examples");
-		//entityManager.persist(area);
-		//entityManager.flush();
 		areaRepository.save(area);
 		
 		Optional<Area> areaFounded = areaRepository.findById(area.getId());
