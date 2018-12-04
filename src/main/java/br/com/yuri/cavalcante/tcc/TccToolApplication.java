@@ -26,7 +26,7 @@ import br.com.yuri.cavalcante.tcc.repositories.SoftgoalRepository;
 import br.com.yuri.cavalcante.tcc.repositories.UserRepository;
 
 @SpringBootApplication
-public class TccToolApplication implements CommandLineRunner{
+public class TccToolApplication extends SpringBootServletInitializer implements CommandLineRunner {
 
 	@Autowired
 	private ApplicationDomainRepository applicationDomainRepository;
@@ -49,6 +49,11 @@ public class TccToolApplication implements CommandLineRunner{
 	@Autowired
 	private CatalogRepository catalogRepository;
 
+	@Override 
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(TccToolApplication.class);
+	}
+	
 	public static void main(String[] args) {
 		SpringApplication.run(TccToolApplication.class, args);
 	}
