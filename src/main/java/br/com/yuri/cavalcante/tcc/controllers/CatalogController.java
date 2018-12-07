@@ -23,7 +23,7 @@ import br.com.yuri.cavalcante.tcc.domain.Catalog;
 import br.com.yuri.cavalcante.tcc.services.CatalogService;
 
 @RestController
-@RequestMapping(value = "/catalogs")
+@RequestMapping(value = "/catalogos")
 public class CatalogController {
 	
 	@Autowired

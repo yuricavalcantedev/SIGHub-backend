@@ -35,9 +35,6 @@ public class TccToolApplication extends SpringBootServletInitializer implements 
 	private AreaRepository areaRepository;
 
 	@Autowired
-	private NoteRepository noteRepository;
-
-	@Autowired
 	private PersonRepository personRepository;
 
 	@Autowired
