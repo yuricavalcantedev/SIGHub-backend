@@ -95,7 +95,7 @@ public class CatalogService {
 		String searchWords[] = searchText.split("OR");
 
 		for (int i = 0; i < searchWords.length; i++) {
-			catalogs.addAll(findByDomainOrArea(searchWords[i]));
+			catalogs.addAll(findByDomainOrArea(searchWords[i].trim()));
 		}
 
 		return catalogs;
@@ -110,13 +110,13 @@ public class CatalogService {
 			catalog = catalogsList.get(i);
 			for (int j = 0; j < catalog.getApplicationDomainList().size(); j++) {
 				ApplicationDomain applicationDomain = catalog.getApplicationDomainList().get(j);
-				if (applicationDomain.getName().equals(searchText)) {
+				if (applicationDomain.getName().equalsIgnoreCase(searchText)) {
 					catalogsSearched.add(catalog);
 				}
 			}
 			for (int j = 0; j < catalog.getAreasList().size(); j++) {
 				Area area = catalog.getAreasList().get(j);
-				if (area.getName().equals(searchText)) {
+				if (area.getName().equalsIgnoreCase(searchText)) {
 					catalogsSearched.add(catalog);
 				}
 			}

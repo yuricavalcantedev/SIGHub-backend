@@ -24,7 +24,6 @@ import br.com.yuri.cavalcante.tcc.services.UserService;
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
-
 	
 	@Autowired
 	private UserService userService;
