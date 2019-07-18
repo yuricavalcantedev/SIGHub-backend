@@ -100,7 +100,7 @@ public class TccToolApplication extends SpringBootServletInitializer implements 
 		Catalog catalog = new Catalog();
 		catalog.setReference("CHUNG, L.; NIXON");
 		catalog.setYear(2018);
-		catalog.setDescription("This is a catalog of Ubiquos System developed to be showed on a HIC Conference");
+		catalog.setDescription("This is a catalog of Ubiquos System developed to be showed on a HIC Conference This is a catalog of Ubiquos System developed to be showed on a HIC Conference This is a catalog of Ubiquos System developed to be showed on a HIC Conference");
 		catalog.getApplicationDomainList().addAll(Arrays.asList(appDomain));
 		catalog.getAreasList().addAll(Arrays.asList(area));
 		catalog.setOwner(user);
@@ -196,7 +196,7 @@ public class TccToolApplication extends SpringBootServletInitializer implements 
 		Catalog catalog = new Catalog();
 		catalog.setReference("WIEGERS K. ; BEATTY");
 		catalog.setYear(2018);
-		catalog.setDescription("This is a catalog of Ubiquos System developed to be showed on a HIC Conference");
+		catalog.setDescription("This is a catalog of Ubiquos System developed to be showed on a HIC Conference This is a catalog of Ubiquos System developed to be showed on a HIC Conference This is a catalog of Ubiquos System developed to be showed on a HIC Conference");
 		catalog.getApplicationDomainList().addAll(Arrays.asList(appDomain));
 		catalog.getAreasList().addAll(Arrays.asList(area));
 		catalog.setOwner(user);
@@ -292,7 +292,7 @@ public class TccToolApplication extends SpringBootServletInitializer implements 
 		Catalog catalog = new Catalog();
 		catalog.setReference("CHUNG, L.; NIXON, B. A.;");
 		catalog.setYear(2018);
-		catalog.setDescription("This is a catalog of Ubiquos System developed to be showed on a HIC Conference");
+		catalog.setDescription("This is a catalog of Ubiquos System developed to be showed on a HIC Conference This is a catalog of Ubiquos System developed to be showed on a HIC Conference This is a catalog of Ubiquos System developed to be showed on a HIC Conference");
 		catalog.getApplicationDomainList().addAll(Arrays.asList(appDomain));
 		catalog.getAreasList().addAll(Arrays.asList(area));
 		catalog.setOwner(user);
@@ -388,7 +388,7 @@ public class TccToolApplication extends SpringBootServletInitializer implements 
 		Catalog catalog = new Catalog();
 		catalog.setReference("CARVALHO, R. M.; ANDRADE, R. M. C.; OLIVEIRA, K. M.; KOLSKI, C.");
 		catalog.setYear(2018);
-		catalog.setDescription("This is a catalog of Ubiquos System developed to be showed on a HIC Conference");
+		catalog.setDescription("This is a catalog of Ubiquos System developed to be showed on a HIC Conference This is a catalog of Ubiquos System developed to be showed on a HIC ConferenceThis is a catalog of Ubiquos System developed to be showed on a HIC Conference");
 		catalog.getApplicationDomainList().addAll(Arrays.asList(appDomain));
 		catalog.getAreasList().addAll(Arrays.asList(area));
 		catalog.setOwner(user);
@@ -484,7 +484,7 @@ public class TccToolApplication extends SpringBootServletInitializer implements 
 		Catalog catalog = new Catalog();
 		catalog.setReference("BERANDER, P.; DAMM, L.-O.");
 		catalog.setYear(2018);
-		catalog.setDescription("This is a catalog of Ubiquos System developed to be showed on a HIC Conference");
+		catalog.setDescription("This is a catalog of Ubiquos System developed to be showed on a HIC Conference This is a catalog of Ubiquos System developed to be showed on a HIC Conferencev");
 		catalog.getApplicationDomainList().addAll(Arrays.asList(appDomain));
 		catalog.getAreasList().addAll(Arrays.asList(area));
 		catalog.setOwner(user);

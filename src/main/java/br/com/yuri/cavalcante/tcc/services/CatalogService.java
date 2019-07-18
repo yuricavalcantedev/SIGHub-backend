@@ -147,5 +147,5 @@ public class CatalogService {
 		// catalogRepository.deleteSoftGoalsByIdFather(id);
 
 	}
-
+	
 }

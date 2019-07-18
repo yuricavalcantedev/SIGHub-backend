@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,17 +32,22 @@ public class CatalogController {
 	@CrossOrigin
 	@PostMapping
 	public ResponseEntity<Void> insert(@Valid @RequestBody Catalog catalog){
+		try {
+
+			catalog = catalogService.insert(catalog);
+			
+			URI uri = ServletUriComponentsBuilder
+					.fromCurrentRequest()
+					.path("/{id}")
+					.buildAndExpand(catalog.getId())
+					.toUri();
+			return ResponseEntity.created(uri).build();		
+			
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 		
-		catalog = catalogService.insert(catalog);
-		
-		URI uri = ServletUriComponentsBuilder
-				.fromCurrentRequest()
-				.path("/{id}")
-				.buildAndExpand(catalog.getId())
-				.toUri();
-		
-		return ResponseEntity.created(uri).build();
-		
+		return null;
 	}
 
 	@CrossOrigin

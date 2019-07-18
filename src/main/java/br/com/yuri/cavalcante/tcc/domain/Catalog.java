@@ -28,6 +28,7 @@ public class Catalog implements Serializable{
 	private String reference;
 	private Integer year;
 	private String description;
+	private Integer views;
 
 	@ManyToOne
 	@JoinColumn(name="owner_id")
@@ -73,6 +74,7 @@ public class Catalog implements Serializable{
 		this.year = year;
 		this.owner = owner;
 		this.description = description;
+		this.views = 0;
 		this.softgoalMain = softgoalMain;
 	}
 
@@ -136,8 +138,15 @@ public class Catalog implements Serializable{
 
 	public void setDescription(String description) {
 		this.description = description;
+	}	
+
+	public Integer getViews() {
+		return views;
 	}
 
+	public void setViews(Integer views) {
+		this.views = views;
+	}
 
 	public Softgoal getSoftgoalMain() {
 		return softgoalMain;
